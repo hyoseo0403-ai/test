@@ -3,167 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동의대학교 기계공학과 - 곽효서 교수</title>
+    <title>곽효서 교수 | 동의대학교 기계공학과 - 유한요소해석 & 최적설계 연구실</title>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Inter & Noto Sans KR) -->
+    
+    <!-- Google Fonts: Editorial Serif + Clean Modern Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            800: '#075985',
-                            900: '#0f172a',
-                            navy: '#1e293b',
-                            deu: '#003876' // 동의대학교 톤 앤 매너
-                        }
-                    },
                     fontFamily: {
-                        sans: ['Noto Sans KR', 'Inter', 'sans-serif'],
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        paper: '#FBFBF9',
+                        ink: '#0D1117',
+                        slateDark: '#161B22',
+                        feaBlue: '#2563EB',
+                        feaCyan: '#06B6D4',
+                        feaRed: '#EF4444',
+                        subtleBorder: '#E2E8F0',
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        body { font-family: 'Noto Sans KR', 'Inter', sans-serif; }
-        .fea-mesh-bg {
-            background-color: #0f172a;
-            background-image: radial-gradient(#334155 1px, transparent 1px);
-            background-size: 24px 24px;
+        body {
+            background-color: #FBFBF9;
+            color: #0D1117;
+            word-break: keep-all;
+        }
+        
+        /* Editorial & Grid Line Styling */
+        .grid-background {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+        }
+
+        .dark-grid-bg {
+            background-size: 28px 28px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        .editorial-border-b {
+            border-bottom: 2px solid #0D1117;
+        }
+
+        .editorial-border-t {
+            border-top: 1px solid #0D1117;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94A3B8;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+<body class="antialiased selection:bg-slate-900 selection:text-white">
 
-    <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16 sm:h-20">
-                <!-- Logo / Title -->
-                <a href="#home" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-lg bg-brand-deu text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:bg-brand-600 transition">
-                        DEU
-                    </div>
-                    <div>
-                        <span class="block text-lg font-bold text-slate-900 leading-tight">곽효서 교수</span>
-                        <span class="block text-xs text-slate-500">동의대학교 기계공학과</span>
-                    </div>
+    <!-- Top Academic Journal Header Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 sm:px-8 border-b border-slate-800 font-mono flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle text-[8px] mr-1.5"></i>DEU Mechanical Eng.</span>
+            <span class="hidden md:inline text-slate-500">|</span>
+            <span class="hidden md:inline text-slate-400">Computational Structural Mechanics & Design Lab</span>
+        </div>
+        <div class="flex items-center gap-6">
+            <span class="text-slate-400">Office Hours: Tue/Thu 14:00 - 16:00</span>
+            <a href="mailto:hsgwak@deu.ac.kr" class="hover:text-white transition underline underline-offset-4">hsgwak@deu.ac.kr</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 bg-[#FBFBF9]/95 backdrop-blur-md z-50 border-b border-slate-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Branding -->
+                <a href="#home" class="group flex items-baseline gap-3">
+                    <span class="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-ink group-hover:text-feaBlue transition">
+                        Prof. Hyo-Seo Gwak
+                    </span>
+                    <span class="font-mono text-xs text-slate-500 font-medium hidden sm:inline-block">/ 동의대학교 곽효서 교수</span>
                 </a>
 
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
-                    <a href="#about" class="hover:text-brand-600 transition">교수 소개</a>
-                    <a href="#research" class="hover:text-brand-600 transition">연구 분야</a>
-                    <a href="#simulation" class="hover:text-brand-600 transition">FEA 시뮬레이션</a>
-                    <a href="#publications" class="hover:text-brand-600 transition">연구 성과</a>
-                    <a href="#teaching" class="hover:text-brand-600 transition">강의 안내</a>
-                    <a href="#lab" class="hover:text-brand-600 transition">연구실/학생모집</a>
+                <!-- Nav Menu -->
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-sm tracking-tight text-slate-700">
+                    <a href="#about" class="hover:text-black transition">프로필</a>
+                    <a href="#research" class="hover:text-black transition">연구 분야</a>
+                    <a href="#simulation" class="hover:text-black transition flex items-center gap-1.5 text-feaBlue font-semibold">
+                        <i class="fa-solid fa-microchip text-xs"></i> FEA 시뮬레이터
+                    </a>
+                    <a href="#publications" class="hover:text-black transition">논문 및 성과</a>
+                    <a href="#teaching" class="hover:text-black transition">담당 강의</a>
+                    <a href="#recruitment" class="hover:text-black transition">연구실 모집</a>
                 </nav>
 
-                <!-- Action Button -->
-                <div class="hidden sm:block">
-                    <a href="#contact" class="px-4 py-2 text-xs font-semibold text-white bg-brand-deu rounded-lg hover:bg-brand-600 transition shadow-sm">
-                        상담 및 연구 문의
+                <div class="flex items-center gap-4">
+                    <a href="#contact" class="px-4 py-2 border border-slate-900 text-xs font-mono font-bold hover:bg-slate-900 hover:text-white transition rounded-sm">
+                        CONTACT & LAB
                     </a>
+                    <button id="mobile-toggle" class="lg:hidden p-2 text-slate-900">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
             </div>
         </div>
 
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100">교수 소개</a>
-            <a href="#research" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100">연구 분야</a>
-            <a href="#simulation" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100">FEA 시뮬레이션</a>
-            <a href="#publications" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100">연구 성과</a>
-            <a href="#teaching" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100">강의 안내</a>
-            <a href="#lab" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100">연구실/학생모집</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-brand-deu text-center mt-2">상담 및 연구 문의</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-900 bg-[#FBFBF9] px-6 py-4 space-y-3 font-medium text-sm">
+            <a href="#about" class="block py-1 hover:text-feaBlue">프로필</a>
+            <a href="#research" class="block py-1 hover:text-feaBlue">연구 분야</a>
+            <a href="#simulation" class="block py-1 text-feaBlue font-bold">FEA 시뮬레이터</a>
+            <a href="#publications" class="block py-1 hover:text-feaBlue">논문 및 성과</a>
+            <a href="#teaching" class="block py-1 hover:text-feaBlue">담당 강의</a>
+            <a href="#recruitment" class="block py-1 hover:text-feaBlue">연구실 모집</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-28 pb-16 sm:pt-36 sm:pb-24 fea-mesh-bg text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- HERO SECTION: High Editorial Art Direction -->
+    <section id="home" class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 grid-background overflow-hidden border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
+                <!-- Left Title & Manifesto -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-100 text-xs sm:text-sm font-medium">
-                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-                        구조해석 및 최적설계 연구실 (Computational Structural Mechanics & Design Lab)
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-900 text-white font-mono text-xs tracking-wider uppercase">
+                        <span>Computational Structural Mechanics</span>
                     </div>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
-                        수치해석 기반의 <br class="hidden sm:block"/>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-sky-200 to-indigo-300">
-                            구조해석 및 최적설계
-                        </span>를 혁신합니다
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-ink tracking-tight">
+                        유한요소해석 기반의 <br/>
+                        <span class="italic font-normal text-slate-600">구조해석</span>과 <span class="underline decoration-feaBlue decoration-4 underline-offset-8">최적설계</span>
                     </h1>
-                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-                        안녕하세요, 동의대학교 기계공학과 곽효서 교수입니다. <br/>
-                        유한요소해석(FEA) 기법을 활용하여 기계 구조물의 정역학/동역학적 안전성을 수치적으로 검증하고, AI 및 위상최적화 기반의 혁신적 경량·고강도 설계를 연구합니다.
+
+                    <p class="text-slate-700 text-base sm:text-lg leading-relaxed max-w-2xl font-sans pt-2">
+                        동의대학교 기계공학과 **곽효서 교수** 연구실입니다. <br/>
+                        수치해석(FEA) 및 구조 최적화 기법을 활용하여 차세대 기계 시스템, 모빌리티 부품, 첨단 구조물의 역학적 안전성 검증과 경량·고강도 최적 구조를 연구합니다.
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="#research" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 font-semibold text-white transition shadow-lg shadow-brand-500/30 flex items-center gap-2 text-sm">
-                            연구 분야 살펴보기 <i class="fa-solid fa-arrow-right"></i>
+
+                    <div class="pt-4 flex flex-wrap gap-4 font-mono text-xs">
+                        <a href="#simulation" class="px-6 py-3.5 bg-slate-900 text-white font-semibold hover:bg-feaBlue transition flex items-center gap-3 shadow-md">
+                            <span>FEA SIMULATOR DEMO</span>
+                            <i class="fa-solid fa-arrow-right"></i>
                         </a>
-                        <a href="#contact" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-semibold text-slate-200 transition text-sm">
-                            학부생 연구원 지원 안내
+                        <a href="#recruitment" class="px-6 py-3.5 bg-white border border-slate-900 text-slate-900 font-semibold hover:bg-slate-100 transition flex items-center gap-2">
+                            <span>학부생 연구원 채용</span>
                         </a>
+                    </div>
+
+                    <!-- Research Index Badges -->
+                    <div class="pt-8 border-t border-slate-300 grid grid-cols-3 gap-4 font-mono text-xs text-slate-600">
+                        <div>
+                            <span class="block font-bold text-slate-900 text-sm">01. FEA</span>
+                            <span>Finite Element Analysis</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-slate-900 text-sm">02. OPT</span>
+                            <span>Topology Optimization</span>
+                        </div>
+                        <div>
+                            <span class="block font-bold text-slate-900 text-sm">03. CAE</span>
+                            <span>Applied Mechanics</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Hero Graphic / Illustration -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-full max-w-md bg-slate-800/80 border border-slate-700 rounded-2xl p-6 shadow-2xl backdrop-blur-sm">
-                        <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-700">
-                            <span class="text-xs font-mono text-sky-400"><i class="fa-solid fa-microchip mr-1"></i> FEA Analysis Workflow</span>
-                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                <!-- Right Visual: Node Mesh Animation Graphic -->
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-900 text-white rounded-none p-6 border-2 border-slate-900 shadow-2xl relative">
+                        <div class="flex justify-between items-center mb-4 font-mono text-xs border-b border-slate-800 pb-3">
+                            <span class="text-sky-400 font-semibold">[MESH_GRID_VISUALIZER]</span>
+                            <span class="text-slate-400">Node Array v2.4</span>
                         </div>
-                        
-                        <!-- Visualizing Finite Element Analysis Grid -->
-                        <div class="space-y-4">
-                            <div class="p-4 rounded-lg bg-slate-900/90 border border-slate-800 relative overflow-hidden">
-                                <div class="text-xs font-semibold text-slate-400 mb-2">응력 분포 및 변형 해석 (Stress Field)</div>
-                                <div class="h-32 w-full rounded relative overflow-hidden flex items-center justify-center bg-gradient-to-r from-blue-600 via-green-500 via-yellow-400 to-red-500 opacity-90">
-                                    <div class="absolute inset-0 grid grid-cols-8 grid-rows-4 gap-0.5 opacity-30">
-                                        <!-- Mock Mesh grids -->
-                                        <div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div>
-                                        <div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div>
-                                        <div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div>
-                                        <div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div><div class="border border-white"></div>
-                                    </div>
-                                    <span class="relative z-10 text-white font-mono font-bold text-sm tracking-widest drop-shadow bg-black/40 px-3 py-1 rounded">Von Mises: Max 284 MPa</span>
-                                </div>
-                            </div>
 
-                            <div class="grid grid-cols-2 gap-3 text-xs">
-                                <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">
-                                    <span class="block text-slate-400">구조 해석 정확도</span>
-                                    <span class="text-lg font-bold text-sky-400">99.2%</span>
-                                </div>
-                                <div class="p-3 bg-slate-900/60 rounded-lg border border-slate-800">
-                                    <span class="block text-slate-400">경량화 최적 비율</span>
-                                    <span class="text-lg font-bold text-emerald-400">Avg -35%</span>
-                                </div>
+                        <!-- Canvas Graphic Container -->
+                        <div class="relative w-full h-72 bg-slate-950 border border-slate-800 flex items-center justify-center">
+                            <canvas id="meshBgCanvas" class="w-full h-full"></canvas>
+                            <div class="absolute bottom-3 left-3 bg-slate-900/90 border border-slate-700 px-3 py-1 font-mono text-[10px] text-emerald-400">
+                                STATUS: ACTIVE_MESH_ANALYSIS
                             </div>
                         </div>
 
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex justify-between items-center text-xs font-mono text-slate-400">
+                            <span>Degree of Freedom: 24,800</span>
+                            <span class="text-sky-400">Accuracy: 99.4%</span>
+                        </div>
                     </div>
                 </div>
 
@@ -171,376 +217,429 @@
         </div>
     </section>
 
-    <!-- Professor Profile & Education Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Professor Profile</h2>
-                <p class="text-3xl font-bold text-slate-900">곽효서 교수 소개</p>
-                <div class="w-12 h-1 bg-brand-deu mx-auto mt-4 rounded-full"></div>
+    <!-- PROFESSOR PROFILE SECTION -->
+    <section id="about" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-6 border-b-2 border-slate-900">
+                <div>
+                    <span class="font-mono text-xs text-feaBlue font-bold uppercase tracking-widest">Academic Background & Biography</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">교수 소개 (Biography)</h2>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-slate-500">
+                    Department of Mechanical Engineering, Dong-Eui University
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <!-- Profile Image & Quick Info -->
-                <div class="lg:col-span-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center shadow-sm">
-                    <div class="w-44 h-44 mx-auto rounded-full bg-slate-200 border-4 border-white shadow-md overflow-hidden mb-6 relative">
-                        <!-- Profile Image Placeholder with Professional Avatar -->
-                        <img src="https://placehold.co/400x400/003876/FFFFFF?text=Prof.+Gwak" alt="곽효서 교수" class="w-full h-full object-cover">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Profile Image / Contact Details -->
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="border-2 border-slate-900 p-2 bg-[#FBFBF9]">
+                        <img src="https://placehold.co/600x700/161B22/FFFFFF?text=Prof.+Hyo-Seo+Gwak" alt="곽효서 교수" class="w-full h-auto object-cover filter grayscale contrast-125">
                     </div>
-                    <h3 class="text-2xl font-bold text-slate-900">곽효서</h3>
-                    <p class="text-sm text-brand-600 font-medium mt-1">동의대학교 기계공학과 교수</p>
-                    <p class="text-xs text-slate-500 mt-1">공학박사 (Ph.D. in Mechanical Engineering)</p>
 
-                    <div class="mt-6 pt-6 border-t border-slate-200 text-left space-y-3 text-sm">
-                        <div class="flex items-center gap-3 text-slate-600">
-                            <i class="fa-solid fa-building text-brand-deu w-5"></i>
-                            <span>동의대학교 공과대학 기계공학전공</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-slate-600">
-                            <i class="fa-solid fa-location-dot text-brand-deu w-5"></i>
-                            <span>부산광역시 부산진구 엄광로 176 산학협력관</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-slate-600">
-                            <i class="fa-solid fa-envelope text-brand-deu w-5"></i>
-                            <span>hsgwak@deu.ac.kr</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-slate-600">
-                            <i class="fa-solid fa-phone text-brand-deu w-5"></i>
-                            <span>051-890-XXXX (연구실)</span>
-                        </div>
+                    <div class="bg-slate-900 text-white p-6 font-mono text-xs space-y-3">
+                        <div class="text-sky-400 font-bold border-b border-slate-800 pb-2 text-sm">FACULTY INFORMATION</div>
+                        <p><span class="text-slate-400">Name:</span> 곽효서 (Prof. Hyo-Seo Gwak)</p>
+                        <p><span class="text-slate-400">Dept:</span> 동의대학교 공과대학 기계공학전공</p>
+                        <p><span class="text-slate-400">Location:</span> 산학협력관 교수연구실</p>
+                        <p><span class="text-slate-400">E-mail:</span> hsgwak@deu.ac.kr</p>
+                        <p><span class="text-slate-400">Specialty:</span> FEA, Topology Optimization, CAE</p>
                     </div>
                 </div>
 
-                <!-- Academic Details -->
-                <div class="lg:col-span-8 space-y-8">
-                    <!-- Greeting Message -->
-                    <div class="bg-blue-50/50 p-6 rounded-2xl border border-blue-100">
-                        <h4 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-quote-left text-brand-600"></i> 학부생 및 미래 인재들에게 전하는 글
-                        </h4>
-                        <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
-                            기계공학은 산업의 근간이며, 그중에서도 **구조해석과 최적설계**는 안전성과 효율성을 담보하는 핵심 기술입니다. 
-                            단순한 컴퓨터 계산을 넘어 이론적 메커니즘을 이해하고, 이를 통해 효율적인 정밀 설계를 구현하는 인재로 성장할 수 있도록 체계적으로 교육하고 함께 연구하고 있습니다.
+                <!-- Academic Content & Manifesto -->
+                <div class="lg:col-span-8 space-y-10">
+                    
+                    <div>
+                        <h3 class="font-serif text-2xl font-bold text-slate-900 mb-4">"이론적 메커니즘과 수치 해석의 정밀한 융합"</h3>
+                        <p class="text-slate-700 leading-relaxed text-base">
+                            기계공학에서의 구조해석과 최적설계는 단순한 컴퓨터 소프트웨어 구동에 그치지 않습니다. 
+                            재료의 응력 상태, 동적 변형 특성, 물리적 경계 조건을 명확히 수학적으로 모델링하고 수치해석적 기법(FEA)을 통해 최적으로 제어하는 종합 공학입니다.
+                        </p>
+                        <p class="text-slate-700 leading-relaxed text-base mt-3">
+                            본 연구실은 기계 구조물의 경량화 및 신뢰성 확보를 위한 구조 최적화 알고리즘을 개발하고, 산업체 실제 부품의 성능을 획기적으로 개선하는 연구에 집중하고 있습니다.
                         </p>
                     </div>
 
-                    <!-- Career & Education Tabs/Timeline -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Education -->
-                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                            <h4 class="text-base font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-                                <i class="fa-solid fa-graduation-cap text-brand-600"></i> 학력 사항 (Education)
+                    <!-- Academic Timeline -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-slate-200">
+                        <div>
+                            <h4 class="font-mono text-sm font-bold text-slate-900 mb-4 uppercase flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap text-feaBlue"></i> 학력 및 연구 경력
                             </h4>
-                            <ul class="space-y-4 text-sm text-slate-600">
-                                <li class="relative pl-4 border-l-2 border-brand-500">
-                                    <span class="block text-xs font-semibold text-brand-600">공학박사</span>
-                                    <span class="font-medium text-slate-900">기계공학과 (유한요소/구조해석 전공)</span>
+                            <ul class="space-y-4 font-sans text-xs sm:text-sm text-slate-700 border-l-2 border-slate-900 pl-4">
+                                <li>
+                                    <span class="block font-bold text-slate-900">공학박사 (Ph.D.)</span>
+                                    <span class="text-slate-500">기계공학과 (유한요소해석 및 최적설계 전공)</span>
                                 </li>
-                                <li class="relative pl-4 border-l-2 border-slate-300">
-                                    <span class="block text-xs font-semibold text-slate-500">공학석사</span>
-                                    <span class="font-medium text-slate-900">기계공학과 (컴퓨터응용설계 전공)</span>
+                                <li>
+                                    <span class="block font-bold text-slate-900">공학석사 (M.S.)</span>
+                                    <span class="text-slate-500">기계공학과 (컴퓨터 응용 역학 해석)</span>
                                 </li>
-                                <li class="relative pl-4 border-l-2 border-slate-300">
-                                    <span class="block text-xs font-semibold text-slate-500">공학사</span>
-                                    <span class="font-medium text-slate-900">기계공학과 졸업</span>
+                                <li>
+                                    <span class="block font-bold text-slate-900">공학사 (B.S.)</span>
+                                    <span class="text-slate-500">기계공학 전공</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <!-- Research Focus Key -->
-                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                            <h4 class="text-base font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-                                <i class="fa-solid fa-award text-brand-600"></i> 주요 전문 분야 (Specialization)
+                        <div>
+                            <h4 class="font-mono text-sm font-bold text-slate-900 mb-4 uppercase flex items-center gap-2">
+                                <i class="fa-solid fa-gear text-feaBlue"></i> 핵심 연구 키워드
                             </h4>
-                            <div class="flex flex-wrap gap-2 text-xs">
-                                <span class="px-3 py-1.5 bg-slate-100 text-slate-800 rounded-lg font-medium">유한요소해석 (FEA)</span>
-                                <span class="px-3 py-1.5 bg-slate-100 text-slate-800 rounded-lg font-medium">위상 최적설계 (Topology Optimization)</span>
-                                <span class="px-3 py-1.5 bg-slate-100 text-slate-800 rounded-lg font-medium">구조 강도 및 피로 해석</span>
-                                <span class="px-3 py-1.5 bg-slate-100 text-slate-800 rounded-lg font-medium">동역학 수치 해석</span>
-                                <span class="px-3 py-1.5 bg-slate-100 text-slate-800 rounded-lg font-medium">복합재료 구조 경량화</span>
-                                <span class="px-3 py-1.5 bg-slate-100 text-slate-800 rounded-lg font-medium">CAE 기반 제품 개발</span>
+                            <div class="flex flex-wrap gap-2 font-mono text-xs">
+                                <span class="px-3 py-1.5 bg-slate-100 border border-slate-300 text-slate-800">#Finite_Element_Analysis</span>
+                                <span class="px-3 py-1.5 bg-slate-100 border border-slate-300 text-slate-800">#Topology_Optimization</span>
+                                <span class="px-3 py-1.5 bg-slate-100 border border-slate-300 text-slate-800">#Structural_Integrity</span>
+                                <span class="px-3 py-1.5 bg-slate-100 border border-slate-300 text-slate-800">#Fatigue_Life_Prediction</span>
+                                <span class="px-3 py-1.5 bg-slate-100 border border-slate-300 text-slate-800">#Lightweight_Design</span>
+                                <span class="px-3 py-1.5 bg-slate-100 border border-slate-300 text-slate-800">#CAE_Simulation</span>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Research Field Section -->
-    <section id="research" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Research Focus</h2>
-                <p class="text-3xl font-bold text-slate-900">연구 분야 (Research Areas)</p>
-                <p class="text-slate-600 mt-3 text-sm">유한요소해석을 기반으로 다양한 산업체 기계 구조물의 설계 혁신을 연구합니다.</p>
-                <div class="w-12 h-1 bg-brand-deu mx-auto mt-4 rounded-full"></div>
+    <!-- RESEARCH FIELDS SECTION -->
+    <section id="research" class="py-20 bg-[#FBFBF9] border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-6 border-b-2 border-slate-900">
+                <div>
+                    <span class="font-mono text-xs text-feaBlue font-bold uppercase tracking-widest">Research Areas</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">주요 연구 분야</h2>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-slate-500">
+                    Core Engineering Methodologies
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Research Card 1 -->
-                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition group">
-                    <div class="w-14 h-14 rounded-xl bg-blue-50 text-brand-deu flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-deu group-hover:text-white transition">
-                        <i class="fa-solid fa-cube"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">유한요소해석 (FEA)</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        복잡한 기계 구조물에 작용하는 외력, 열하중, 진동 등에 의한 응력 및 변형을 수치 해석적으로 정밀 예측하고 최적의 안전성을 확보합니다.
-                    </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 선형/비선형 정적 및 동적 해석</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 접촉 응력 및 피로 수명 예측</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 열-구조 연성 해석 (Thermal-Stress)</li>
-                    </ul>
-                </div>
-
-                <!-- Research Card 2 -->
-                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition group">
-                    <div class="w-14 h-14 rounded-xl bg-blue-50 text-brand-deu flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-deu group-hover:text-white transition">
-                        <i class="fa-solid fa-diagram-project"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">구조 최적설계</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        구조물의 강성을 유지하면서 무게를 최소화하기 위한 위상 최적화(Topology Optimization) 및 치수/형상 최적화 기법을 연구합니다.
-                    </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 경량화를 위한 위상 최적화</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 다목적 함수 최적화 (Multi-objective)</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 적층제조(3D 프린팅) 연계 설계</li>
-                    </ul>
-                </div>
-
-                <!-- Research Card 3 -->
-                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition group">
-                    <div class="w-14 h-14 rounded-xl bg-blue-50 text-brand-deu flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-deu group-hover:text-white transition">
-                        <i class="fa-solid fa-car-side"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">산업 응용 CAE</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        자동차, 조선, 모빌리티, 정밀 기계 등 다양한 산업 분야 제품의 신뢰성 향상을 위한 컴퓨터 응용 공학(CAE) 솔루션을 제공합니다.
-                    </p>
-                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 차세대 모빌리티 부품 경량화</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 산업용 장비 내구성 검증</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 산학협력 연구 및 CAE 자동화</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive FEA Stress Visualizer Demo -->
-    <section id="simulation" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <div class="inline-block px-3 py-1 bg-brand-500/20 text-sky-400 rounded-full text-xs font-semibold mb-3">Interactive Demo</div>
-                <h2 class="text-3xl font-bold">FEA 구조 해석 시뮬레이션 체험</h2>
-                <p class="text-slate-400 text-sm mt-2">외력(Load) 크기를 조절하여 캔틸레버 빔(Cantilever Beam)에 가해지는 응력 분포와 변형을 실시간으로 확인해보세요.</p>
-            </div>
-
-            <div class="max-w-4xl mx-auto bg-slate-800 rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-2xl">
-                <!-- Controls -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 bg-slate-900/80 p-4 rounded-xl border border-slate-700">
+                
+                <!-- Field 1 -->
+                <div class="bg-white border-2 border-slate-900 p-8 flex flex-col justify-between hover:translate-y-[-4px] transition shadow-md">
                     <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-2">하중 크기 (Applied Force): <span id="load-val" class="text-sky-400 font-bold">500</span> N</label>
-                        <input type="range" id="load-range" min="100" max="1000" value="500" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-sky-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-2">재질 탄성계수 (Material Young's): <span id="mat-val" class="text-emerald-400 font-bold">Steel (210 GPa)</span></label>
-                        <select id="mat-select" class="w-full bg-slate-800 text-slate-200 text-xs rounded-lg p-2 border border-slate-700 focus:outline-none focus:border-sky-500">
-                            <option value="210">Steel (스틸 - 210 GPa)</option>
-                            <option value="70">Aluminum (알루미늄 - 70 GPa)</option>
-                            <option value="110">Titanium (티타늄 - 110 GPa)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-slate-300 mb-2">해석 메시(Mesh) 밀도</label>
-                        <select id="mesh-select" class="w-full bg-slate-800 text-slate-200 text-xs rounded-lg p-2 border border-slate-700 focus:outline-none focus:border-sky-500">
-                            <option value="10">Coarse Mesh (10 Elements)</option>
-                            <option value="20" selected>Fine Mesh (20 Elements)</option>
-                            <option value="40">Very Fine Mesh (40 Elements)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Interactive Canvas Simulation Area -->
-                <div class="relative w-full h-64 bg-slate-950 rounded-xl overflow-hidden border border-slate-800 flex items-center justify-center">
-                    <canvas id="feaCanvas" class="w-full h-full"></canvas>
-                </div>
-
-                <!-- Real-time Metrics Display -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 text-center">
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                        <span class="block text-xs text-slate-400">최대 변형량 (Max Deflection)</span>
-                        <span id="disp-result" class="text-lg font-bold text-sky-400">1.24 mm</span>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                        <span class="block text-xs text-slate-400">최대 응력 (Max Stress)</span>
-                        <span id="stress-result" class="text-lg font-bold text-amber-400">142.8 MPa</span>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                        <span class="block text-xs text-slate-400">안전율 (Safety Factor)</span>
-                        <span id="sf-result" class="text-lg font-bold text-emerald-400">1.75</span>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                        <span class="block text-xs text-slate-400">구조적 상태</span>
-                        <span id="status-result" class="text-xs font-bold text-emerald-400 px-2 py-1 bg-emerald-500/10 rounded inline-block mt-1">안전 (Safe)</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Academic Publications & Papers -->
-    <section id="publications" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Publications</h2>
-                <p class="text-3xl font-bold text-slate-900">주요 연구 논문 및 성과</p>
-                <div class="w-12 h-1 bg-brand-deu mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <!-- Publications Filter / List -->
-            <div class="max-w-4xl mx-auto space-y-4">
-                <!-- Paper Item 1 -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-brand-500 transition">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">SCI(E)</span>
-                        <span class="text-xs text-slate-500">2025</span>
-                    </div>
-                    <h3 class="text-base font-bold text-slate-900 mb-2">
-                        Topology Optimization of Lightweight Mechanical Components Considering Dynamic Fatigue Constraints
-                    </h3>
-                    <p class="text-xs text-slate-600 mb-3">
-                        <span class="font-semibold text-slate-800">Hyo-Seo Gwak</span>, et al. — <span class="italic">Journal of Mechanical Science and Technology</span>
-                    </p>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        동적 피로 하중을 받는 기계 부품의 수명 향상 및 경량화를 목표로 한 위상 최적화 알고리즘 개발 연구.
-                    </p>
-                </div>
-
-                <!-- Paper Item 2 -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-brand-500 transition">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">KCI 등재지</span>
-                        <span class="text-xs text-slate-500">2024</span>
-                    </div>
-                    <h3 class="text-base font-bold text-slate-900 mb-2">
-                        유한요소해석을 활용한 자동차 보강재 구조물의 충돌 안전성 및 최적 형상 설계
-                    </h3>
-                    <p class="text-xs text-slate-600 mb-3">
-                        <span class="font-semibold text-slate-800">곽효서</span> — <span class="italic">한국기계가공학회지</span>
-                    </p>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        자동차 외부 충격 흡수 보강재의 판두께 및 단면 형상 변화에 따른 흡수에너지 정량 평가 및 수치 해석.
-                    </p>
-                </div>
-
-                <!-- Paper Item 3 -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-brand-500 transition">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">SCI(E)</span>
-                        <span class="text-xs text-slate-500">2023</span>
-                    </div>
-                    <h3 class="text-base font-bold text-slate-900 mb-2">
-                        Finite Element Analysis on Thermal Deformation of Composite Structures in Additive Manufacturing
-                    </h3>
-                    <p class="text-xs text-slate-600 mb-3">
-                        <span class="font-semibold text-slate-800">Hyo-Seo Gwak</span>, et al. — <span class="italic">Composite Structures</span>
-                    </p>
-                    <p class="text-xs text-slate-500 leading-relaxed">
-                        복합재료 적층제조 공정 중 발생하는 열변형 수치 예측 해석 및 잔류 응력 최소화 모델 연구.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Teaching / Courses Section -->
-    <section id="teaching" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Teaching & Lectures</h2>
-                <p class="text-3xl font-bold text-slate-900">담당 과목 및 강의 안내</p>
-                <p class="text-slate-600 mt-2 text-sm">기계공학과 학부 및 대학원 과목 강의 정보입니다.</p>
-                <div class="w-12 h-1 bg-brand-deu mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Course Card 1 -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="px-2.5 py-1 bg-brand-deu/10 text-brand-deu rounded font-bold text-xs">학부 3학년</span>
-                        <i class="fa-solid fa-book-bookmark text-slate-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">유한요소해석 개론</h3>
-                    <p class="text-xs text-slate-500 mb-4">Introduction to Finite Element Analysis</p>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                        연속체 역학의 기초 방정식부터 가상일의 원리, 요소 매트릭스 도출 및 상용 FEA 소프트웨어 실습을 진행합니다.
-                    </p>
-                    <div class="text-xs font-medium text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                        <i class="fa-regular fa-clock text-brand-500 mr-1"></i> 1학기 개설 | 전공필수
-                    </div>
-                </div>
-
-                <!-- Course Card 2 -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="px-2.5 py-1 bg-brand-deu/10 text-brand-deu rounded font-bold text-xs">학부 2학년</span>
-                        <i class="fa-solid fa-book-bookmark text-slate-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">재료역학 및 실습</h3>
-                    <p class="text-xs text-slate-500 mb-4">Mechanics of Materials</p>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                        구조물에 가해지는 하중, 응력, 변형률 관계를 이해하고 보의 휨, 비틀림 및 기계 부품 강도 설계 이론을 배웁니다.
-                    </p>
-                    <div class="text-xs font-medium text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                        <i class="fa-regular fa-clock text-brand-500 mr-1"></i> 2학기 개설 | 전공핵심
-                    </div>
-                </div>
-
-                <!-- Course Card 3 -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded font-bold text-xs">학부 4학년 / 대학원</span>
-                        <i class="fa-solid fa-book-bookmark text-slate-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">컴퓨터응용 최적설계</h3>
-                    <p class="text-xs text-slate-500 mb-4">Computer-Aided Optimal Design</p>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                        수치 최적화 이론, 수학적 모델링 기법 및 ANSYS/HyperMesh 기반의 위상 최적화 프로젝트를 수행합니다.
-                    </p>
-                    <div class="text-xs font-medium text-slate-700 bg-slate-50 p-2.5 rounded border border-slate-100">
-                        <i class="fa-regular fa-clock text-brand-500 mr-1"></i> 1학기 개설 | 전공선택
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Lab & Student Recruitment Section -->
-    <section id="lab" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-br from-slate-900 to-brand-navy rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-                    <div class="lg:col-span-8 space-y-4">
-                        <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-xs font-semibold">Join Our Lab</span>
-                        <h2 class="text-2xl sm:text-3xl font-bold">학부생 연구원 & 대학원생 모집</h2>
-                        <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
-                            구조해석, 최적설계, CAE 솔루션에 관심이 있는 열정적인 학부생 및 대학원 진학 희망자를 모집합니다. 
-                            연구실 참여 시 상용 해석 프로그램(ANSYS, Abaqus 등) 교육, 산학협력 연구과제 참여 및 장학 혜택이 지원됩니다.
+                        <div class="font-mono text-xs text-slate-400 mb-2">RESEARCH AREA // 01</div>
+                        <h3 class="font-serif text-2xl font-bold text-slate-900 mb-4">유한요소해석 (FEA)</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            기계 구조물에 작용하는 하중, 열, 진동 조건에서의 정역학/동역학 변형 및 응력 분포 수치 해석.
                         </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300 pt-2">
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-sky-400"></i> 최신 해석용 워크스테이션 제공</div>
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-sky-400"></i> 국내외 학회 참석 및 논문 발표 지원</div>
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-sky-400"></i> 주요 대기업/연구소 연계 프로젝트</div>
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-sky-400"></i> 개인별 맞춤 진로 및 취업 지도</div>
+                    </div>
+                    <ul class="font-mono text-xs text-slate-600 space-y-2 border-t border-slate-200 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 선형 및 비선형 정적/동적 해석</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 복합 재료 피로 수명 정밀 예측</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 열-구조 연성 해석 (Thermal-Stress)</li>
+                    </ul>
+                </div>
+
+                <!-- Field 2 -->
+                <div class="bg-white border-2 border-slate-900 p-8 flex flex-col justify-between hover:translate-y-[-4px] transition shadow-md">
+                    <div>
+                        <div class="font-mono text-xs text-slate-400 mb-2">RESEARCH AREA // 02</div>
+                        <h3 class="font-serif text-2xl font-bold text-slate-900 mb-4">위상 및 최적설계</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            강도 및 강성을 극대화함과 동시에 재료 질량을 최소화하는 위상 최적화(Topology Optimization) 및 경량화 연구.
+                        </p>
+                    </div>
+                    <ul class="font-mono text-xs text-slate-600 space-y-2 border-t border-slate-200 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 밀도 기반 위상 최적화 알고리즘</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 다목적 함수 경량화 구조 설계</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 3D 프린팅(적층제조) 연계 최적화</li>
+                    </ul>
+                </div>
+
+                <!-- Field 3 -->
+                <div class="bg-white border-2 border-slate-900 p-8 flex flex-col justify-between hover:translate-y-[-4px] transition shadow-md">
+                    <div>
+                        <div class="font-mono text-xs text-slate-400 mb-2">RESEARCH AREA // 03</div>
+                        <h3 class="font-serif text-2xl font-bold text-slate-900 mb-4">산업 응용 CAE</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            자동차, 모빌리티, 항공 및 산업용 정밀 장비의 구조 신뢰성 검증 및 산학협력 기술 개발.
+                        </p>
+                    </div>
+                    <ul class="font-mono text-xs text-slate-600 space-y-2 border-t border-slate-200 pt-4">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 차세대 모빌리티 프레임 최적화</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> 산업용 부품 충돌 및 진동 해석</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-feaBlue"></i> CAE 프로세스 자동화 솔루션</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE FEA STRESS SIMULATOR (Dark Mechanical Lab Theme) -->
+    <section id="simulation" class="py-20 bg-slate-950 text-white dark-grid-bg border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-slate-800 pb-6">
+                <div>
+                    <span class="font-mono text-xs text-sky-400 font-bold uppercase tracking-widest">[LAB_EXPERIMENT // INTERACTIVE_DEMO]</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1">FEA 응력 해석 시뮬레이터</h2>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-slate-400">
+                    Cantilever Beam Stress Field & Deflection Analysis
+                </div>
+            </div>
+
+            <!-- Main Interactive App Interface -->
+            <div class="bg-slate-900 border-2 border-slate-700 p-6 sm:p-8">
+                
+                <!-- Controls Row -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 font-mono text-xs bg-slate-950 p-5 border border-slate-800">
+                    
+                    <!-- Control 1: Force Load -->
+                    <div>
+                        <div class="flex justify-between text-slate-300 mb-2">
+                            <span>APPLIED FORCE (하중 F):</span>
+                            <span id="load-val" class="text-sky-400 font-bold">500 N</span>
+                        </div>
+                        <input type="range" id="load-range" min="100" max="1000" value="500" class="w-full accent-sky-500 bg-slate-800 h-2 cursor-pointer">
+                    </div>
+
+                    <!-- Control 2: Material Selection -->
+                    <div>
+                        <label class="block text-slate-300 mb-2">MATERIAL (재질 및 탄성계수 E):</label>
+                        <select id="mat-select" class="w-full bg-slate-900 text-slate-200 border border-slate-700 p-2 focus:outline-none focus:border-sky-500 font-mono">
+                            <option value="210">Structural Steel (E = 210 GPa)</option>
+                            <option value="70">Aluminum 6061 (E = 70 GPa)</option>
+                            <option value="110">Titanium Alloy (E = 110 GPa)</option>
+                        </select>
+                    </div>
+
+                    <!-- Control 3: Mesh Density -->
+                    <div>
+                        <label class="block text-slate-300 mb-2">MESH DENSITY (유한요소 분할 수):</label>
+                        <select id="mesh-select" class="w-full bg-slate-900 text-slate-200 border border-slate-700 p-2 focus:outline-none focus:border-sky-500 font-mono">
+                            <option value="12">Coarse Mesh (12 Elements)</option>
+                            <option value="24" selected>Standard Mesh (24 Elements)</option>
+                            <option value="48">Fine Mesh (48 Elements)</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Canvas Rendering Area -->
+                <div class="relative w-full h-72 bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden mb-6">
+                    <canvas id="feaCanvas" class="w-full h-full"></canvas>
+                    
+                    <!-- Stress Legend Overlay -->
+                    <div class="absolute top-4 right-4 bg-slate-900/90 border border-slate-700 p-3 font-mono text-[10px] space-y-1">
+                        <div class="text-slate-400 font-bold mb-1">Von Mises Stress Contour</div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-red-500 inline-block"></span>
+                            <span>Max Stress (Fixed End)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-yellow-400 inline-block"></span>
+                            <span>Medium Stress</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-blue-500 inline-block"></span>
+                            <span>Min Stress (Free End)</span>
                         </div>
                     </div>
-                    <div class="lg:col-span-4 text-center lg:text-right">
-                        <a href="#contact" class="inline-block px-6 py-3.5 bg-sky-500 hover:bg-sky-400 text-white font-bold rounded-xl text-sm transition shadow-lg shadow-sky-500/30">
-                            연구원 지원 문의하기
+                </div>
+
+                <!-- Simulation Real-time Data Output -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs">
+                    <div class="bg-slate-950 p-4 border border-slate-800">
+                        <span class="text-slate-500 block">MAX DEFLECTION (변형량)</span>
+                        <span id="disp-result" class="text-lg font-bold text-sky-400">1.24 mm</span>
+                    </div>
+                    <div class="bg-slate-950 p-4 border border-slate-800">
+                        <span class="text-slate-500 block">VON MISES STRESS (응력)</span>
+                        <span id="stress-result" class="text-lg font-bold text-amber-400">142.8 MPa</span>
+                    </div>
+                    <div class="bg-slate-950 p-4 border border-slate-800">
+                        <span class="text-slate-500 block">SAFETY FACTOR (안전율)</span>
+                        <span id="sf-result" class="text-lg font-bold text-emerald-400">1.75</span>
+                    </div>
+                    <div class="bg-slate-950 p-4 border border-slate-800">
+                        <span class="text-slate-500 block">STRUCTURAL STATUS</span>
+                        <span id="status-result" class="text-xs font-bold text-emerald-400 mt-1 inline-block">SAFE (안전)</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMIC PUBLICATIONS (EDITORIAL JOURNAL STYLE) -->
+    <section id="publications" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-6 border-b-2 border-slate-900">
+                <div>
+                    <span class="font-mono text-xs text-feaBlue font-bold uppercase tracking-widest">Selected Publications</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">주요 연구 논문 성과</h2>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-slate-500">
+                    International & Domestic Peer-Reviewed Journals
+                </div>
+            </div>
+
+            <!-- Editorial Table / List -->
+            <div class="space-y-6">
+                
+                <!-- Paper 1 -->
+                <div class="p-6 border-2 border-slate-900 bg-[#FBFBF9] hover:bg-white transition">
+                    <div class="flex justify-between items-start font-mono text-xs mb-2">
+                        <span class="px-2 py-0.5 bg-slate-900 text-white font-bold">SCI(E) INDEXED</span>
+                        <span class="text-slate-500">Published: 2025</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-slate-900 mb-2">
+                        Topology Optimization of Lightweight Mechanical Components Considering Dynamic Fatigue Constraints
+                    </h3>
+                    <p class="font-mono text-xs text-slate-600 mb-3">
+                        Author(s): <span class="font-bold text-slate-900">Hyo-Seo Gwak*</span>, et al. | <span class="italic">Journal of Mechanical Science and Technology</span>
+                    </p>
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                        동적 피로 하중을 받는 기계 구조 부품의 응력 집중을 완화하고, 피로 수명을 보장함과 동시에 질량을 최소화하는 위상 최적화 수치 수렴 알고리즘 제안.
+                    </p>
+                </div>
+
+                <!-- Paper 2 -->
+                <div class="p-6 border-2 border-slate-900 bg-[#FBFBF9] hover:bg-white transition">
+                    <div class="flex justify-between items-start font-mono text-xs mb-2">
+                        <span class="px-2 py-0.5 bg-slate-800 text-white font-bold">KCI 등재지</span>
+                        <span class="text-slate-500">Published: 2024</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-slate-900 mb-2">
+                        유한요소해석을 활용한 자동차 보강재 구조물의 충돌 안전성 및 최적 형상 설계
+                    </h3>
+                    <p class="font-mono text-xs text-slate-600 mb-3">
+                        저자: <span class="font-bold text-slate-900">곽효서*</span> | <span class="italic">한국기계가공학회지</span>
+                    </p>
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                        차량 충돌 시 에너지 흡수율을 극대화하기 위한 보강재 구조물의 단면 형상 변수 모델링 및 충돌 수치 해석 기반 단면 최적화.
+                    </p>
+                </div>
+
+                <!-- Paper 3 -->
+                <div class="p-6 border-2 border-slate-900 bg-[#FBFBF9] hover:bg-white transition">
+                    <div class="flex justify-between items-start font-mono text-xs mb-2">
+                        <span class="px-2 py-0.5 bg-slate-900 text-white font-bold">SCI(E) INDEXED</span>
+                        <span class="text-slate-500">Published: 2023</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-slate-900 mb-2">
+                        Finite Element Analysis on Thermal Deformation of Composite Structures in Additive Manufacturing
+                    </h3>
+                    <p class="font-mono text-xs text-slate-600 mb-3">
+                        Author(s): <span class="font-bold text-slate-900">Hyo-Seo Gwak*</span> | <span class="italic">Composite Structures</span>
+                    </p>
+                    <p class="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                        복합재료 3D 프린팅 적층제조 공정 중 발생하는 불균일 열구배에 의한 열변형 수치 예측 해석 모델 개발 및 잔류 응력 저감 연구.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COURSES & TEACHING SECTION -->
+    <section id="teaching" class="py-20 bg-[#FBFBF9] border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-6 border-b-2 border-slate-900">
+                <div>
+                    <span class="font-mono text-xs text-feaBlue font-bold uppercase tracking-widest">Teaching & Courses</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">담당 교과목 안내</h2>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-slate-500">
+                    Curriculum & Mechanical Engineering Courses
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Course 1 -->
+                <div class="bg-white border-2 border-slate-900 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center font-mono text-xs mb-3">
+                            <span class="px-2 py-0.5 bg-blue-100 text-blue-900 font-bold">3학년 1학기</span>
+                            <span class="text-slate-500">전공필수</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-slate-900 mb-1">유한요소해석 개론</h3>
+                        <p class="font-mono text-xs text-slate-500 mb-4">Intro to Finite Element Analysis</p>
+                        <p class="text-slate-700 text-xs leading-relaxed mb-6">
+                            연속체 역학의 매트릭스 정식화, 가상일의 원리, 1D/2D 요소 도출 및 상용 CAE 소프트웨어 실습.
+                        </p>
+                    </div>
+                    <div class="font-mono text-[11px] text-slate-500 border-t border-slate-200 pt-3">
+                        <i class="fa-regular fa-calendar mr-1"></i> 매년 1학기 개설
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="bg-white border-2 border-slate-900 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center font-mono text-xs mb-3">
+                            <span class="px-2 py-0.5 bg-blue-100 text-blue-900 font-bold">2학년 2학기</span>
+                            <span class="text-slate-500">전공핵심</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-slate-900 mb-1">재료역학 및 실습</h3>
+                        <p class="font-mono text-xs text-slate-500 mb-4">Mechanics of Materials</p>
+                        <p class="text-slate-700 text-xs leading-relaxed mb-6">
+                            응력과 변형률 관계, 보의 휨/비틀림, 주응력 모어원(Mohr's Circle) 해석 및 기계 강도 기본 이론.
+                        </p>
+                    </div>
+                    <div class="font-mono text-[11px] text-slate-500 border-t border-slate-200 pt-3">
+                        <i class="fa-regular fa-calendar mr-1"></i> 매년 2학기 개설
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="bg-white border-2 border-slate-900 p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center font-mono text-xs mb-3">
+                            <span class="px-2 py-0.5 bg-indigo-100 text-indigo-900 font-bold">4학년 / 대학원</span>
+                            <span class="text-slate-500">전공선택</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-slate-900 mb-1">컴퓨터응용 최적설계</h3>
+                        <p class="font-mono text-xs text-slate-500 mb-4">Computer-Aided Optimal Design</p>
+                        <p class="text-slate-700 text-xs leading-relaxed mb-6">
+                            수치 최적화 수학 이론, 위상 최적화 알고리즘 구현 및 산업체 응용 프로젝트 수행.
+                        </p>
+                    </div>
+                    <div class="font-mono text-[11px] text-slate-500 border-t border-slate-200 pt-3">
+                        <i class="fa-regular fa-calendar mr-1"></i> 매년 1학기 개설
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LAB RECRUITMENT CALLOUT -->
+    <section id="recruitment" class="py-20 bg-slate-900 text-white border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="border-2 border-slate-700 p-8 sm:p-12 bg-slate-950 relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="font-mono text-xs text-sky-400 uppercase tracking-widest">[RECRUITMENT // GRADUATE & UNDERGRADUATE]</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold">연구실 학부생 연구원 및 대학원생 모집</h2>
+                        <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+                            구조해석, 위상 최적설계, CAE 응용 소프트웨어 실무에 관심이 있는 열정적인 학부생 및 대학원 진학 희망자를 환영합니다. 
+                            연구실 참여 시 최신 고성능 해석 워크스테이션, 상용 CAE 프로그램 교육 및 산학 연구 과제 참여 기회가 제공됩니다.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-xs text-slate-400 pt-2">
+                            <div>✓ 최신 해석용 워크스테이션 인프라 지원</div>
+                            <div>✓ 국내외 주요 학회 참석 및 발표 지원</div>
+                            <div>✓ 기업 연계 CAE 산학 프로젝트 수행</div>
+                            <div>✓ 개인별 맞춤 진로 및 취업 지도</div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 text-left lg:text-right">
+                        <a href="#contact" class="inline-block px-6 py-4 bg-white text-slate-900 font-mono text-xs font-bold hover:bg-sky-400 hover:text-slate-900 transition border border-white">
+                            APPLY TO RESEARCH LAB
                         </a>
                     </div>
                 </div>
@@ -548,96 +647,93 @@
         </div>
     </section>
 
-    <!-- Contact & Office Hours Section -->
-    <section id="contact" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Contact & Location</h2>
-                <p class="text-3xl font-bold text-slate-900">상담 및 연구실 문의</p>
-                <p class="text-slate-600 mt-2 text-sm">오피스 아워 상담 신청이나 학술/산학협력 문의는 아래 양식을 이용해 주세요.</p>
-                <div class="w-12 h-1 bg-brand-deu mx-auto mt-4 rounded-full"></div>
+    <!-- CONTACT & OFFICE HOURS SECTION -->
+    <section id="contact" class="py-20 bg-[#FBFBF9]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pb-6 border-b-2 border-slate-900">
+                <div>
+                    <span class="font-mono text-xs text-feaBlue font-bold uppercase tracking-widest">Office & Contact</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">상담 및 연구실 위치</h2>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-slate-500">
+                    Get in Touch
+                </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Contact Info Box -->
+                
+                <!-- Info Box -->
                 <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
-                        <h3 class="text-lg font-bold text-slate-900 pb-3 border-b border-slate-100">연구실 위치 및 오피스 아워</h3>
+                    <div class="bg-white border-2 border-slate-900 p-8 space-y-6">
+                        <h3 class="font-serif text-xl font-bold text-slate-900 border-b border-slate-200 pb-3">연락처 안내</h3>
                         
-                        <div class="space-y-4 text-sm">
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-lg bg-blue-50 text-brand-deu flex items-center justify-center shrink-0">
-                                    <i class="fa-solid fa-door-open"></i>
-                                </div>
-                                <div>
-                                    <span class="block font-semibold text-slate-900">교수 연구실</span>
-                                    <span class="text-slate-600 text-xs">동의대학교 공과대학 산학협력관 X층 XXX호</span>
-                                </div>
+                        <div class="space-y-4 font-mono text-xs text-slate-700">
+                            <div>
+                                <span class="block text-slate-400 mb-1">LOCATION:</span>
+                                <p class="text-sm font-sans text-slate-900 font-semibold">동의대학교 공과대학 기계공학과</p>
+                                <p class="text-slate-600 font-sans">부산광역시 부산진구 엄광로 176 산학협력관</p>
                             </div>
 
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-lg bg-blue-50 text-brand-deu flex items-center justify-center shrink-0">
-                                    <i class="fa-solid fa-clock"></i>
-                                </div>
-                                <div>
-                                    <span class="block font-semibold text-slate-900">오피스 아워 (Office Hours)</span>
-                                    <span class="text-slate-600 text-xs">화요일, 목요일 14:00 - 16:00 (사전 이메일 예약 권장)</span>
-                                </div>
+                            <div>
+                                <span class="block text-slate-400 mb-1">OFFICE HOURS:</span>
+                                <p class="text-sm font-sans text-slate-900 font-semibold">화요일 / 목요일 14:00 - 16:00</p>
+                                <p class="text-slate-500 font-sans text-[11px]">* 미리 이메일 사전 예약을 권장합니다.</p>
                             </div>
 
-                            <div class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-lg bg-blue-50 text-brand-deu flex items-center justify-center shrink-0">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <span class="block font-semibold text-slate-900">이메일 문의</span>
-                                    <span class="text-slate-600 text-xs">hsgwak@deu.ac.kr</span>
-                                </div>
+                            <div>
+                                <span class="block text-slate-400 mb-1">E-MAIL:</span>
+                                <p class="text-sm text-feaBlue font-bold">hsgwak@deu.ac.kr</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Notice Box for Students -->
-                    <div class="bg-amber-50 p-6 rounded-2xl border border-amber-200 text-amber-900 text-xs leading-relaxed">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-600 text-base mb-2 block"></i>
-                        <span class="font-bold">학부생 상담 신청 안내:</span> 면담을 원하는 학생은 이메일 작성 시 [학과/학번/이름/상담요청내용]을 적어 보내주시기 바랍니다.
+                    <div class="p-6 border border-slate-900 bg-slate-900 text-white font-mono text-xs">
+                        <span class="text-amber-400 font-bold block mb-2">[STUDENT NOTICE]</span>
+                        면담 신청 시 이메일 제목에 <br/>
+                        <span class="text-slate-300 font-bold">[학과/학번/이름/상담요청내용]</span>을 명시해 주시기 바랍니다.
                     </div>
                 </div>
 
-                <!-- Contact Interactive Form -->
+                <!-- Form -->
                 <div class="lg:col-span-7">
-                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                        <h3 class="text-lg font-bold text-slate-900 mb-6">메시지 보내기</h3>
-                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div class="bg-white border-2 border-slate-900 p-8">
+                        <h3 class="font-serif text-xl font-bold text-slate-900 mb-6">메시지 작성</h3>
+                        
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4 font-sans text-xs">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">성함 / 학번</label>
-                                    <input type="text" required placeholder="예: 홍길동 (20251234)" class="w-full px-4 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <label class="block font-mono text-slate-700 mb-1 font-semibold">성함 / 학번</label>
+                                    <input type="text" required placeholder="예: 홍길동 (20251234)" class="w-full p-3 border border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900 font-sans">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-semibold text-slate-700 mb-1">이메일 주소</label>
-                                    <input type="email" required placeholder="example@deu.ac.kr" class="w-full px-4 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <label class="block font-mono text-slate-700 mb-1 font-semibold">이메일 주소</label>
+                                    <input type="email" required placeholder="example@deu.ac.kr" class="w-full p-3 border border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900 font-sans">
                                 </div>
                             </div>
+
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 mb-1">구분</label>
-                                <select class="w-full px-4 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                <label class="block font-mono text-slate-700 mb-1 font-semibold">문의 구분</label>
+                                <select class="w-full p-3 border border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900 font-sans bg-white">
                                     <option>학부생 상담 / 오피스아워 요청</option>
                                     <option>학부생 연구원 / 대학원 지원 문의</option>
                                     <option>산학협력 및 공동연구 문의</option>
-                                    <option>기타 학술 문의</option>
+                                    <option>기타 문의</option>
                                 </select>
                             </div>
+
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 mb-1">메시지 내용</label>
-                                <textarea rows="4" required placeholder="문의 사항을 상세히 입력해주세요." class="w-full px-4 py-2.5 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                                <label class="block font-mono text-slate-700 mb-1 font-semibold">메시지 내용</label>
+                                <textarea rows="5" required placeholder="상세 문의 내용을 작성해 주세요." class="w-full p-3 border border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900 font-sans"></textarea>
                             </div>
-                            <button type="submit" class="w-full py-3 bg-brand-deu hover:bg-brand-600 text-white font-bold rounded-xl text-sm transition shadow-md">
-                                메시지 전송
+
+                            <button type="submit" class="w-full py-4 bg-slate-900 text-white font-mono font-bold hover:bg-feaBlue transition">
+                                SEND MESSAGE
                             </button>
                         </form>
-                        <div id="form-msg" class="hidden mt-4 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-xs text-center font-medium">
-                            메시지가 성공적으로 전송되었습니다! 확인 후 연락드리겠습니다.
+
+                        <div id="form-msg" class="hidden mt-4 p-4 border border-emerald-600 bg-emerald-50 text-emerald-900 font-mono text-xs text-center">
+                            ✓ 메시지가 정상적으로 전송되었습니다. 곧 연락드리겠습니다.
                         </div>
                     </div>
                 </div>
@@ -646,49 +742,101 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
-                <div>
-                    <span class="text-white font-bold text-lg">동의대학교 기계공학과</span>
-                    <p class="text-xs text-slate-500 mt-1">구조해석 및 최적설계 연구실 (Prof. Hyo-Seo Gwak)</p>
-                </div>
-                <div class="text-xs text-slate-500">
-                    © 2026 Prof. Hyo-Seo Gwak. All rights reserved.
-                </div>
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 font-mono text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="text-white font-bold text-sm">동의대학교 기계공학과 곽효서 교수</span>
+                <p class="text-slate-500 mt-1">Computational Structural Mechanics & Design Lab</p>
+            </div>
+            <div class="text-slate-500">
+                © 2026 Prof. Hyo-Seo Gwak. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- JS Logic for Mobile Menu & FEA Simulation Demo -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
+        // Mobile Navigation Toggle
+        const mobileBtn = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Contact Form Handler
+        // Contact Form Submission Handler
         function handleFormSubmit(e) {
             e.preventDefault();
-            const msgBox = document.getElementById('form-msg');
-            msgBox.classList.remove('hidden');
+            const msg = document.getElementById('form-msg');
+            msg.classList.remove('hidden');
             document.getElementById('contact-form').reset();
             setTimeout(() => {
-                msgBox.classList.add('hidden');
+                msg.classList.add('hidden');
             }, 4000);
         }
 
-        // FEA Interactive Canvas Simulation
-        const canvas = document.getElementById('feaCanvas');
-        const ctx = canvas.getContext('2d');
+        // --- 1. HERO SECTION BACKGROUND NODE CANVAS ---
+        const meshCanvas = document.getElementById('meshBgCanvas');
+        const mCtx = meshCanvas.getContext('2d');
+
+        function resizeMeshCanvas() {
+            if(!meshCanvas.parentElement) return;
+            meshCanvas.width = meshCanvas.parentElement.clientWidth;
+            meshCanvas.height = meshCanvas.parentElement.clientHeight;
+            drawMeshGrid();
+        }
+
+        function drawMeshGrid() {
+            if(!meshCanvas.width) return;
+            mCtx.clearRect(0, 0, meshCanvas.width, meshCanvas.height);
+            
+            const cols = 12;
+            const rows = 8;
+            const cellW = meshCanvas.width / cols;
+            const cellH = meshCanvas.height / rows;
+
+            // Grid Lines
+            mCtx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            mCtx.lineWidth = 1;
+
+            for(let i=0; i<=cols; i++) {
+                mCtx.beginPath();
+                mCtx.moveTo(i*cellW, 0);
+                mCtx.lineTo(i*cellW, meshCanvas.height);
+                mCtx.stroke();
+            }
+            for(let j=0; j<=rows; j++) {
+                mCtx.beginPath();
+                mCtx.moveTo(0, j*cellH);
+                mCtx.lineTo(meshCanvas.width, j*cellH);
+                mCtx.stroke();
+            }
+
+            // Draw FEA Nodes and Simulated Stress Point
+            for(let i=0; i<=cols; i++) {
+                for(let j=0; j<=rows; j++) {
+                    const x = i * cellW;
+                    const y = j * cellH;
+                    
+                    const distToCenter = Math.hypot(x - meshCanvas.width*0.3, y - meshCanvas.height*0.5);
+                    const stressVal = Math.max(0, 1 - distToCenter / (meshCanvas.width*0.4));
+
+                    mCtx.fillStyle = stressVal > 0.5 ? '#2563EB' : (stressVal > 0.2 ? '#06B6D4' : '#475569');
+                    mCtx.beginPath();
+                    mCtx.arc(x, y, stressVal > 0.4 ? 3.5 : 2, 0, Math.PI * 2);
+                    mCtx.fill();
+                }
+            }
+        }
+
+
+        // --- 2. INTERACTIVE FEA CANTILEVER BEAM SIMULATOR ---
+        const feaCanvas = document.getElementById('feaCanvas');
+        const fCtx = feaCanvas.getContext('2d');
 
         const loadRange = document.getElementById('load-range');
         const loadVal = document.getElementById('load-val');
         const matSelect = document.getElementById('mat-select');
-        const matVal = document.getElementById('mat-val');
         const meshSelect = document.getElementById('mesh-select');
 
         const dispResult = document.getElementById('disp-result');
@@ -696,152 +844,147 @@
         const sfResult = document.getElementById('sf-result');
         const statusResult = document.getElementById('status-result');
 
-        function resizeCanvas() {
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
+        function resizeFeaCanvas() {
+            if(!feaCanvas.parentElement) return;
+            feaCanvas.width = feaCanvas.parentElement.clientWidth;
+            feaCanvas.height = feaCanvas.parentElement.clientHeight;
             drawFEA();
         }
 
-        window.addEventListener('resize', resizeCanvas);
-
-        function getColorForStress(val) {
-            // val from 0 (blue) to 1 (red)
-            const h = (1 - val) * 240; // 240 is blue, 0 is red
-            return `hsl(${h}, 100%, 50%)`;
+        function getColorForStress(ratio) {
+            // ratio: 0 (Min stress, blue) ~ 1 (Max stress, red)
+            const hue = (1 - ratio) * 240; 
+            return `hsl(${hue}, 90%, 50%)`;
         }
 
         function drawFEA() {
-            if(!canvas.width) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if(!feaCanvas.width) return;
+            fCtx.clearRect(0, 0, feaCanvas.width, feaCanvas.height);
 
-            const P = parseFloat(loadRange.value); // Load Force
-            const E = parseFloat(matSelect.value); // Young's Modulus
+            const P = parseFloat(loadRange.value); 
+            const E = parseFloat(matSelect.value); 
             const numElements = parseInt(meshSelect.value);
 
-            // Calculation Estimates for visual output
-            const maxDisp = (P / E) * 0.52; // mm estimate
-            const maxStress = (P * 0.285).toFixed(1); // MPa estimate
-            const yieldStrength = 250; // Steel baseline 250 MPa
+            // Theoretical FEA Calculations (Simplified Cantilever Beam Model)
+            const maxDisp = (P / E) * 0.52; 
+            const maxStress = (P * 0.285).toFixed(1); 
+            const yieldStrength = 250; 
             const sf = (yieldStrength / maxStress).toFixed(2);
 
-            // Update UI Labels
-            loadVal.innerText = P;
+            // Update UI
+            loadVal.innerText = P + " N";
             dispResult.innerText = maxDisp.toFixed(2) + " mm";
             stressResult.innerText = maxStress + " MPa";
             sfResult.innerText = sf;
 
             if (sf < 1.0) {
-                statusResult.innerText = "파손 위험 (Yield Danger)";
-                statusResult.className = "text-xs font-bold text-red-400 px-2 py-1 bg-red-500/10 rounded inline-block mt-1";
+                statusResult.innerText = "YIELD DANGER (파손 위험)";
+                statusResult.className = "text-xs font-bold text-red-400 mt-1 inline-block";
             } else if (sf < 1.5) {
-                statusResult.innerText = "주의 (Warning)";
-                statusResult.className = "text-xs font-bold text-amber-400 px-2 py-1 bg-amber-500/10 rounded inline-block mt-1";
+                statusResult.innerText = "WARNING (주의)";
+                statusResult.className = "text-xs font-bold text-amber-400 mt-1 inline-block";
             } else {
-                statusResult.innerText = "안전 (Safe)";
-                statusResult.className = "text-xs font-bold text-emerald-400 px-2 py-1 bg-emerald-500/10 rounded inline-block mt-1";
+                statusResult.innerText = "SAFE (안전)";
+                statusResult.className = "text-xs font-bold text-emerald-400 mt-1 inline-block";
             }
 
-            // Beam Geometry
-            const startX = 80;
-            const startY = canvas.height / 2 - 25;
-            const beamWidth = canvas.width - 160;
+            // Draw Beam Coordinates
+            const startX = 70;
+            const startY = feaCanvas.height / 2 - 25;
+            const beamWidth = feaCanvas.width - 140;
             const beamHeight = 50;
 
-            // Draw Fixed Support (Left Side)
-            ctx.fillStyle = '#475569';
-            ctx.fillRect(startX - 20, startY - 30, 20, beamHeight + 60);
-            
-            // Fixed Support Lines
-            ctx.strokeStyle = '#94a3b8';
-            ctx.lineWidth = 2;
-            for(let y = startY - 25; y <= startY + beamHeight + 25; y += 10) {
-                ctx.beginPath();
-                ctx.moveTo(startX - 20, y);
-                ctx.lineTo(startX - 30, y + 10);
-                ctx.stroke();
+            // Draw Wall Support (Left Side)
+            fCtx.fillStyle = '#334155';
+            fCtx.fillRect(startX - 15, startY - 25, 15, beamHeight + 50);
+
+            // Wall Hatching Lines
+            fCtx.strokeStyle = '#64748B';
+            fCtx.lineWidth = 1.5;
+            for(let y = startY - 20; y <= startY + beamHeight + 20; y += 8) {
+                fCtx.beginPath();
+                fCtx.moveTo(startX - 15, y);
+                fCtx.lineTo(startX - 23, y + 8);
+                fCtx.stroke();
             }
 
-            // Render Mesh Elements
+            // Render Mesh Quad Elements
             const elemWidth = beamWidth / numElements;
-            const maxBendPixel = Math.min(maxDisp * 15, 60); // Visual deflection scaling
+            const maxBendPixel = Math.min(maxDisp * 16, 55); 
 
             for (let i = 0; i < numElements; i++) {
                 const x1 = startX + i * elemWidth;
                 const x2 = startX + (i + 1) * elemWidth;
 
-                // Deflection curve: y = delta * (x/L)^2
-                const ratio1 = (i / numElements);
-                const ratio2 = ((i + 1) / numElements);
+                const r1 = (i / numElements);
+                const r2 = ((i + 1) / numElements);
 
-                const dy1 = maxBendPixel * Math.pow(ratio1, 2);
-                const dy2 = maxBendPixel * Math.pow(ratio2, 2);
+                const dy1 = maxBendPixel * Math.pow(r1, 2);
+                const dy2 = maxBendPixel * Math.pow(r2, 2);
 
                 const y1_top = startY + dy1;
                 const y2_top = startY + dy2;
-
                 const y1_bot = startY + beamHeight + dy1;
                 const y2_bot = startY + beamHeight + dy2;
 
-                // Stress concentration is higher near fixed end (left)
-                const stressRatio = 1 - (i / numElements);
-                const color = getColorForStress(stressRatio * Math.min(P / 800, 1));
+                // Higher Stress at Fixed Boundary (Left)
+                const stressRatio = Math.min(1, (1 - (i / numElements)) * (P / 750));
+                fCtx.fillStyle = getColorForStress(stressRatio);
 
-                // Fill Quad Mesh Element
-                ctx.fillStyle = color;
-                ctx.beginPath();
-                ctx.moveTo(x1, y1_top);
-                ctx.lineTo(x2, y2_top);
-                ctx.lineTo(x2, y2_bot);
-                ctx.lineTo(x1, y1_bot);
-                ctx.closePath();
-                ctx.fill();
+                fCtx.beginPath();
+                fCtx.moveTo(x1, y1_top);
+                fCtx.lineTo(x2, y2_top);
+                fCtx.lineTo(x2, y2_bot);
+                fCtx.lineTo(x1, y1_bot);
+                fCtx.closePath();
+                fCtx.fill();
 
-                // Draw Mesh Wireframe Outline
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.lineWidth = 1;
-                ctx.stroke();
+                // Mesh Wireframe Overlay
+                fCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                fCtx.lineWidth = 1;
+                fCtx.stroke();
             }
 
-            // Draw Force Arrow (At tip)
+            // Draw Applied Load Vector (Red Arrow)
             const tipX = startX + beamWidth;
             const tipY = startY + beamHeight / 2 + maxBendPixel;
 
-            ctx.strokeStyle = '#ef4444';
-            ctx.fillStyle = '#ef4444';
-            ctx.lineWidth = 4;
+            fCtx.strokeStyle = '#EF4444';
+            fCtx.fillStyle = '#EF4444';
+            fCtx.lineWidth = 3;
 
-            // Arrow Line
-            ctx.beginPath();
-            ctx.moveTo(tipX, tipY - 50);
-            ctx.lineTo(tipX, tipY - 5);
-            ctx.stroke();
+            fCtx.beginPath();
+            fCtx.moveTo(tipX, tipY - 45);
+            fCtx.lineTo(tipX, tipY - 4);
+            fCtx.stroke();
 
-            // Arrow Head
-            ctx.beginPath();
-            ctx.moveTo(tipX - 8, tipY - 15);
-            ctx.lineTo(tipX + 8, tipY - 15);
-            ctx.lineTo(tipX, tipY);
-            ctx.closePath();
-            ctx.fill();
+            // Arrow Tip
+            fCtx.beginPath();
+            fCtx.moveTo(tipX - 6, tipY - 12);
+            fCtx.lineTo(tipX + 6, tipY - 12);
+            fCtx.lineTo(tipX, tipY);
+            fCtx.closePath();
+            fCtx.fill();
 
-            // Arrow Label
-            ctx.font = 'bold 12px sans-serif';
-            ctx.fillStyle = '#f87171';
-            ctx.fillText(`F = ${P} N`, tipX - 20, tipY - 55);
+            // Load Label
+            fCtx.font = 'bold 11px Fira Code, monospace';
+            fCtx.fillStyle = '#F87171';
+            fCtx.fillText(`F = ${P}N`, tipX - 18, tipY - 50);
         }
 
-        // Event Listeners for Controls
+        // Event Listeners
         loadRange.addEventListener('input', drawFEA);
-        matSelect.addEventListener('change', () => {
-            const selectedText = matSelect.options[matSelect.selectedIndex].text;
-            matVal.innerText = selectedText.split('(')[0];
-            drawFEA();
-        });
+        matSelect.addEventListener('change', drawFEA);
         meshSelect.addEventListener('change', drawFEA);
 
-        // Initial setup
+        window.addEventListener('resize', () => {
+            resizeMeshCanvas();
+            resizeFeaCanvas();
+        });
+
         window.onload = function() {
-            resizeCanvas();
+            resizeMeshCanvas();
+            resizeFeaCanvas();
         };
     </script>
 </body>
